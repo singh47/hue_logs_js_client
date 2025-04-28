@@ -6,7 +6,15 @@ npm install hue-logs-client
 
 ## usage
 ```javascript
-const HueLogger = require('./hueLogger');
-// use your server URL instead of localhost
- const logger = new HueLogger('http://localhost:5000'); logger.log('This is a test log message');
+const HueLogger = require('hue-logs-client');
+
+const logger = new HueLogger({
+    serverUrl: 'http://localhost:5000',
+    apiKey: 'your-api-key',
+    serviceName: 'WebApp'
+});
+
+logger.log('User logged in - test log')
+    .then(() => console.log('Log sent successfully'))
+    .catch(err => console.error(err));
 ```
